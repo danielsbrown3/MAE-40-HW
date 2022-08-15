@@ -1,0 +1,25 @@
+%Bode for 9.12
+
+%A
+%First Order Low-Pass Filter G(s)=1/(s+1)
+bode(tf([1],[1 1]))
+
+%B
+%PD Filter G(s)=(s-1)/1
+bode(tf([1 -1],[1]))
+
+%C
+%All-Pass Filter G(s)=(s-1)/(s+1)
+bode(tf([1 -1],[1 1]))
+
+%D
+%PID Filter G(s)=(s^2+101s+100)/s
+bode(tf([1 101 100],[1]))
+
+%E
+%Bandpass Filter
+bode(tf([1],[1 101 100]))
+
+%F
+%Second Order Low-Pass Filter
+bode(tf([1],[1 1 1]))
