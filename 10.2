@@ -1,0 +1,20 @@
+%introduce variables capacitors C1-C5 and Ca-Cc
+syms C1 C2 C3 C4 C5 Ca Cb Cc
+
+%Define equations for capacitance using the parrallel and series capacitors
+%Series Capacitance 1/C=1/C1 + 1/C2 ... etc
+%Parrallel Capacitance C=C1 + C2 + C3 ... etc
+x1= (1/Ca)+(1/Cb)==1/(1/(1/C1)+1/((1/C2)+(1/C3)))
+x2= (1/Ca)+(1/Cc)==1/(1/(1/C2)+1/((1/C1)+(1/C3)))
+x3= (1/Cb)+(1/Cc)==1/(1/(1/C3)+1/((1/C1)+(1/C2)))
+
+%Use matlab to solver for variables easy peasy
+A=solve(x1,x2,x3,Ca,Cb,Cc);
+B=solve(x1,x2,x3,C1,C2,C3);
+
+%Get full Capacitance equation by combining the equations 
+Ca=simplify(A.Ca),Cb=simplify(A.Cb),Cc=simplify(A.Cc)
+C1=simplify(B.C1),C2=simplify(B.C2),C3=simplify(B.C3)
+
+%Solving for 10.3d
+totalC=simplify(1/Ca + 1/[1/(1/Cb+1/C4)+1/(1/Cc +1/C5)])
