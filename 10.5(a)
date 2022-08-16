@@ -1,0 +1,3 @@
+%Plots the transfer function 1/(.5s^3+s^2+.5s+1)
+bode(tf([1],[.5 1 .5 1]))
+damp(tf([1],[.5 1 .5 1]))
