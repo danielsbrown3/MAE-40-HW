@@ -1,3 +1,0 @@
-%Bode for 10.5a
-%Transfer function s^2-.5s+1
-bode(tf([1 -.5 1],[1]))
