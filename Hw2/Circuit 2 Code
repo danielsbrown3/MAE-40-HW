@@ -1,0 +1,24 @@
+%Question 2
+clc;clear all;clf;
+%Declares variables as symbolic matrices
+syms v0 v1 v2 i0 ia ib ic id Ca Cd Rc Rb s t
+%7 equations derived from the circuit
+ia=Ca*s*(v0-v1)
+ic=-ia
+
+v2=ic*Rc+v1
+
+ib=(v0-v2)/Rb
+id=Cd*s*v2
+
+ib==ic+id
+%Simplifies the 7 unknown equation
+t=simplify(ib==ic+id)
+
+%Plots the transfer function (s^2+3s+1)/(s^2-3/2s+1)
+bode(tf([1 3 1],[1 -3/2 1]))
+
+%7 equations and 7 unkowns in matrix form
+A=[Ca*s 0 0 1 0 0 0;0 1 0 0 Rb 0 0;1 -1 0 0 0 Rc 0; 0 Cd*s 0 0 0 0 -1; 0 0 1 -1 -1 0 0; 0 0 0 0 1 -1 -1;0 0 0 1 0 1 0];
+b=[Ca*s*v0; v0; 0; 0; 0; 0; 0];
+A\b
