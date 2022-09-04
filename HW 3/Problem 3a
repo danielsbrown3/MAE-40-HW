@@ -1,0 +1,21 @@
+%Questions 3
+%a Verify the equations governing the general op amp circuit 10.19c
+clc; clf;clear all;
+syms V1 V2 V3 Va Vb Vc Vmin Vplus Vout I1 I2 I3 IR Ia Ib Ic Io R r M1 M2 M3 Ma Mb Mc f s
+%The KVL and KCL of the circuit 
+eqn1= V1-Vmin==I1*R/M1
+eqn2= V2-Vmin==I2*R/M2
+eqn3= V3-Vmin==I3*R/M3
+eqn4= Vmin-Vout==IR*R
+
+eqn5= Va-Vplus==Ia*r/Ma
+eqn6= Vb-Vplus==Ib*r/Mb
+eqn7= Vc-Vplus==Ic*r/Mc
+eqn8= Vplus==Io*r/abs(f)
+
+eqn9= Ia+Ib+Ic==Io
+eqn10= I1+I2+I3==IR
+%Computes Vout by using the 10 unkowns 
+Sol= solve(eqn1, eqn2, eqn3, eqn4, eqn5,eqn6, eqn7, eqn8, eqn9,eqn10, I1, I2, I3, IR, Ia, Ib, Ic, Io,f, Vout);
+
+Vout= Sol.Vout
