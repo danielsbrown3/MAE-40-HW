@@ -1,0 +1,15 @@
+%Question 2 Verify a General Purpose Inverting First Order Ciruit
+syms C1 R1 C2 R2 s Vin IC1 IC2 IR2 IR1 Vout
+%4 KVL equations for the Circuit 
+eqn1= IC1== s*C1*Vin
+eqn2= IC2== s*C2*(-Vout)
+eqn3= IR2== (-Vout)/R2
+eqn4= IR1== (Vin)/R1
+
+%KCL Equation
+eqn5= IR1+IC1==IR2+IC2
+
+%Solver for the unknown 
+Sol= solve(eqn1, eqn2, eqn3, eqn4, eqn5, IC1, IC2, IR2, IR1, Vout); 
+%Solving for the transfer function
+TransferFunction=Sol.Vout/Vin
