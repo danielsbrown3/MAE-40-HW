@@ -1,0 +1,20 @@
+%Question 4
+clc; clf;clear all;
+syms i1 i2 i3 i4 i5 i6 i7 i8 Vin Va Vb Vc Vd Vout R R1 R2 C s 
+%The KVL and KCL of the circuit 
+eqn1= Vb-Vc==i5*R
+eqn2= Vin-Vb==i2*R
+eqn3= Vd==i7*R1
+eqn4= Vout-Vd==i8*R2
+eqn5= Va-Vout==i6*R/2
+eqn6= i1==C*s*(Vin-Va)
+eqn7= i3==C*s*(Va-Vc)
+eqn8= i4==2*C*s*(Vb)
+eqn9= i1==i3+i5
+eqn10= i2==i4+i5
+eqn11= i3+i5==0
+eqn12= i7==i8
+eqn13= Vc==Vd
+
+%Computes Vout by using the 13 unkowns 
+Sol= solve(eqn1, eqn2, eqn3, eqn4, eqn5,eqn6, eqn7, eqn8, eqn9,eqn10, eqn11, eqn12,eqn13, i1, i2, i3, i4, i5, i6, i7, i8, R,C,Vb,Vc,Vd,Vin, Vout)
